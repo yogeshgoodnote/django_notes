@@ -1,0 +1,57 @@
+Django Create Project
+My First Project 
+To create project
+django-admin startproject project1
+C:\Users\pc\Documents>django-admin startproject project1 //created project or folder
+Cd  C:/Users/pc/Documents/ project1
+Run the Django Project
+Cd C:/Users/pc/Documents/ project1
+py manage.py runserver
+ye kuchh files ko create karta h
+Output
+ http://127.0.0.1:8000/ 
+ 
+Create App
+If the server is still running, and you are not able to write commands, press [CTRL] [BREAK], or [CTRL] [C] to stop the server and you should be back in the virtual environment. 
+py manage.py startapp myapp
+views
+Django views are Python functions that takes http requests and returns http response, like HTML documents.
+A web page that uses Django is full of views with different tasks and missions.
+Views are usually put in a file called views.py located on your app's folder.
+There is a views.py in your myapp folder that looks like this: 
+ 
+project1/myapp/views.py: 
+from django.shortcuts import render
+from django.http import HttpResponse
+
+def myapp(request):
+    return HttpResponse("Hello world!")
+# Create your views here.
+
+URLs
+Create a file named urls.py in the same folder as the views.py file, and type this code in it:
+Project1/myapp/urls.py:
+"""
+URL configuration for myproject project.
+
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/5.0/topics/http/urls/
+Examples:
+Function views
+    1. Add an import:  from my_app import views
+    2. Add a URL to urlpatterns:  path('', views.home, name='home')
+Class-based views
+    1. Add an import:  from other_app.views import Home
+    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
+Including another URLconf
+    1. Import the include() function: from django.urls import include, path
+    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+"""
+from django.contrib import admin
+from django.urls import path
+from myproject import views
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('aboutus',views.hello)
+]
